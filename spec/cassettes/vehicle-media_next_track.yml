@@ -8,9 +8,13 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - github.com/timdorr/tesla-api v:1.3.0
+      - github.com/timdorr/tesla-api v:3.0.1
       Authorization:
       - Bearer <TESLA_ACCESS_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 200
@@ -19,11 +23,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 11 Dec 2018 03:59:06 GMT
+      - Thu, 03 Oct 2019 12:07:10 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '659'
+      - '569'
       Connection:
       - keep-alive
       X-Frame-Options:
@@ -34,32 +38,37 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Txid:
-      - 27955654740d1c78c3a1443113ad7fb3
+      - 53507e4ddb533acdca04c85e956d5d0b
       Etag:
-      - W/"0d85a34aa9e150f718d20dc8c7a68fb1"
+      - W/"fee0c127f31e354aae63ac0325c6cce4"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 96720096-cff6-4af3-bacb-f9731e8db0b5
+      - e0c1920f-ebca-44d5-818e-419632e19b30
       X-Runtime:
-      - '0.042320'
+      - '0.034419'
     body:
       encoding: UTF-8
-      string: '{"response":[{"id":19298251174317440,"vehicle_id":1817902171,"vin":"5YJSA1E41GF167745","display_name":"Nikola
-        2.0","option_codes":"MDLS,RENA,AF02,APF1,APH2,APPB,AU01,BC0R,BP00,BR00,BS00,CDM0,CH05,PBCW,CW00,DCF0,DRLH,DSH7,DV4W,FG02,FR04,HP00,IDBA,IX01,LP01,ME02,MI01,PF01,PI01,PK00,PS01,PX00,PX4D,QTVB,RFP2,SC01,SP00,SR01,SU01,TM00,TP03,TR00,UTAB,WTAS,X001,X003,X007,X011,X013,X021,X024,X027,X028,X031,X037,X040,X044,YFFC,COUS","color":null,"tokens":["08f5098517a10231","8d219a2e09242e02"],"state":"online","in_service":false,"id_s":"19298251174317440","calendar_enabled":true,"api_version":4,"backseat_token":null,"backseat_token_updated_at":null}],"count":1}'
-    http_version: 
-  recorded_at: Tue, 11 Dec 2018 03:59:06 GMT
+      string: '{"response":[{"id":1,"vehicle_id":1,"vin":"1","display_name":"tm3","option_codes":"AD15,MDL3,PBSB,RENA,BT37,ID3W,RF3G,S3PB,DRLH,DV2W,W39B,APF0,COUS,BC3B,CH07,PC30,FC3P,FG31,GLFR,HL31,HM31,IL31,LTPB,MR31,FM3B,RS3H,SA3P,STCP,SC04,SU3C,T3CA,TW00,TM00,UT3P,WR00,AU3P,APH3,AF00,ZCST,MI00,CDM0","color":null,"tokens":["1","1"],"state":"online","in_service":false,"id_s":"1","calendar_enabled":true,"api_version":6,"backseat_token":null,"backseat_token_updated_at":null}],"count":1}'
+    http_version:
+  recorded_at: Thu, 03 Oct 2019 12:07:10 GMT
 - request:
     method: post
-    uri: https://owner-api.teslamotors.com/api/1/vehicles/19298251174317440/command/cancel_software_update
+    uri: https://owner-api.teslamotors.com/api/1/vehicles/1/command/media_next_track
     body:
       encoding: UTF-8
       string: ''
     headers:
       User-Agent:
-      - github.com/timdorr/tesla-api v:1.3.0
+      - github.com/timdorr/tesla-api v:3.0.1
       Authorization:
       - Bearer <TESLA_ACCESS_TOKEN>
+      Content-Length:
+      - '0'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 200
@@ -68,7 +77,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Tue, 11 Dec 2018 03:59:07 GMT
+      - Thu, 03 Oct 2019 12:07:11 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -83,18 +92,18 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       X-Txid:
-      - 637d5862f7a5bd11bfdd7521fde3d607
+      - 3378733fc84bfc9a0d8ca8829f3e061e
       Etag:
       - W/"f67eec105dd6522783a1f1bacc52723a"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 628f2e19-3def-4bda-afd4-beb8859a734f
+      - 7d4d8512-ede6-47f7-bec0-0d8827369cce
       X-Runtime:
-      - '0.394726'
+      - '0.233400'
     body:
       encoding: UTF-8
       string: '{"response":{"reason":"","result":true}}'
-    http_version: 
-  recorded_at: Tue, 11 Dec 2018 03:59:07 GMT
+    http_version:
+  recorded_at: Thu, 03 Oct 2019 12:07:11 GMT
 recorded_with: VCR 4.0.0

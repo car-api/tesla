@@ -2,10 +2,10 @@ module TeslaApi
   class Vehicle
     include Stream
     include Autopark
-    attr_reader :api, :email, :id, :vehicle
+    attr_reader :client, :api, :email, :id, :vehicle
 
-    def initialize(api, email, id, vehicle)
-      @api = api
+    def initialize(client, email, id, vehicle)
+      @client = client
       @email = email
       @id = id
       @vehicle = vehicle
@@ -28,15 +28,15 @@ module TeslaApi
     # State
 
     def data
-      api.get("/vehicles/#{id}/data")['response']
+      client.get("/vehicles/#{id}/data")['response']
     end
 
     def mobile_enabled
-      api.get("/vehicles/#{id}/mobile_enabled")['response']
+      client.get("/vehicles/#{id}/mobile_enabled")['response']
     end
 
     def nearby_charging_sites
-      api.get("/vehicles/#{id}/nearby_charging_sites")['response']
+      client.get("/vehicles/#{id}/nearby_charging_sites")['response']
     end
 
     def gui_settings
@@ -62,7 +62,7 @@ module TeslaApi
     # Commands
 
     def wake_up
-      @vehicle = api.post("/vehicles/#{id}/wake_up")['response']
+      @vehicle = client.post("/vehicles/#{id}/wake_up")['response']
     end
 
     def set_valet_mode(on, password=nil)
@@ -121,6 +121,10 @@ module TeslaApi
       command('set_temps', body: {driver_temp: driver_temp, passenger_temp: passenger_temp})['response']
     end
 
+    def set_preconditioning_max(on)
+      command('set_preconditioning_max', body: {on: on})['response']
+    end
+
     def auto_conditioning_start
       command('auto_conditioning_start')['response']
     end
@@ -135,6 +139,10 @@ module TeslaApi
 
     def sun_roof_move(percent)
       command('sun_roof_control', body: {state: 'move', percent: percent})['response']
+    end
+
+    def window_control(command)
+      command('window_control', body: {command: command, lat: 0, lon: 0})['response']
     end
 
     def remote_start_drive(password)
@@ -174,6 +182,10 @@ module TeslaApi
       })['response']
     end
 
+    def share(text)
+      navigation_request(text)
+    end
+
     def schedule_software_update(offset_sec = 0)
       command('schedule_software_update', body: {offset_sec: offset_sec})['response']
     end
@@ -194,14 +206,46 @@ module TeslaApi
       command('set_sentry_mode', body: {on: on})['response']
     end
 
+    def trigger_homelink(lat, lon)
+      command('trigger_homelink', body: {lat: lat, lon: lon})['response']
+    end
+
+    def media_toggle_playback
+      command('media_toggle_playback')['response']
+    end
+
+    def media_next_track
+      command('media_next_track')['response']
+    end
+
+    def media_prev_track
+      command('media_prev_track')['response']
+    end
+
+    def media_next_fav
+      command('media_next_fav')['response']
+    end
+
+    def media_prev_fav
+      command('media_prev_fav')['response']
+    end
+
+    def media_volume_up
+      command('media_volume_up')['response']
+    end
+
+    def media_volume_down
+      command('media_volume_down')['response']
+    end
+
     private
 
     def data_request(name)
-      api.get("/vehicles/#{id}/data_request/#{name}")
+      client.get("/vehicles/#{id}/data_request/#{name}")
     end
 
     def command(name, body: nil)
-      api.post("/vehicles/#{id}/command/#{name}", body: body)
+      client.post("/vehicles/#{id}/command/#{name}", body: body)
     end
   end
 end
